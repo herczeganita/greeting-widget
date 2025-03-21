@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Begrüssung</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      padding: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="greeting"></div>
+
+  <script>
+    function getGreeting() {
+      const hour = new Date().getHours();
+      if (hour < 12) return "Guten Morgen";
+      if (hour < 18) return "Guten Tag";
+      return "Guten Abend";
+    }
+
+    const messages = [
+      "heute ist ein wilder Tag zum Arbeiten!",
+      "heute rockst du das Ding!",
+      "heute ist dein Tag – mach was draus!",
+      "lass es krachen – Kaffee steht bereit!",
+      "die Tastatur wartet auf deine Magie!",
+      "heute sehen deine Ideen besonders gut aus!"
+    ];
+
+    const name = new URLSearchParams(window.location.search).get("name") || "Kollege";
+    const message = messages[Math.floor(Math.random() * messages.length)];
+
+    document.getElementById("greeting").innerText = `${getGreeting()} ${name}, ${message}`;
+  </script>
+</body>
+</html>
